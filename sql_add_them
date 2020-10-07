@@ -1,0 +1,79 @@
+ALTER TABLE `users` ADD `createdby` INT NULL AFTER `chonkhaosat`, ADD `createdat` DATETIME NULL AFTER `createdby`, ADD `updatedby` INT NULL AFTER `createdat`, ADD `updatedat` DATETIME NULL AFTER `updatedby`, ADD `orglv1` INT NULL AFTER `updatedat`, ADD `orglv2` INT NULL AFTER `orglv1`;
+
+ALTER TABLE `sector` ADD `createdby` INT NULL AFTER `sector_active`, ADD `createdat` DATETIME NULL AFTER `createdby`, ADD `updatedby` INT NULL AFTER `createdat`, ADD `updatedat` DATETIME NULL AFTER `updatedby`, ADD `orglv1` INT NULL AFTER `updatedat`, ADD `orglv2` INT NULL AFTER `orglv1`;
+
+ALTER TABLE `ks_organization` ADD `createdby` INT NULL AFTER `org_chudebatbuoc`, ADD `createdat` DATETIME NULL AFTER `createdby`, ADD `updatedby` INT NULL AFTER `createdat`, ADD `updatedat` DATETIME NULL AFTER `updatedby`, ADD `orglv1` INT NULL AFTER `updatedat`, ADD `orglv2` INT NULL AFTER `orglv1`;
+
+//======================
+CREATE TABLE IF NOT EXISTS `gs_phananh` (
+  `phananh_id` int(11) NOT NULL,
+  `phananh_noidung` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phananh_isActived` int(11) NOT NULL DEFAULT '0',
+  `createdby` int(11) DEFAULT NULL,
+  `createdat` datetime DEFAULT NULL,
+  `updatedby` int(11) DEFAULT NULL,
+  `updatedat` datetime DEFAULT NULL,
+  `orglv1` int(11) DEFAULT NULL,
+  `orglv2` int(11) DEFAULT NULL,
+  `phananh_order` int(11) DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+ALTER TABLE `gs_phananh`
+  ADD PRIMARY KEY (`phananh_id`),
+  ADD KEY `phananh_createdby` (`createdby`),
+  ADD KEY `phananh_updatedby` (`updatedby`),
+  ADD KEY `phananh_orglv1` (`orglv1`),
+  ADD KEY `phananh_orglv2` (`orglv2`);
+
+ALTER TABLE `gs_phananh`
+  MODIFY `phananh_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1; 
+
+//======================
+
+CREATE TABLE IF NOT EXISTS `gs_tinhtrangxuly` (
+  `tinhtrangxuly_id` int(11) NOT NULL,
+  `tinhtrangxuly_noidung` text COLLATE utf8_unicode_ci,
+  `tinhtrangxuly_actived` int(11) NOT NULL DEFAULT '0',
+  `createdby` int(11) DEFAULT NULL,
+  `createdat` datetime DEFAULT NULL,
+  `updatedby` int(11) DEFAULT NULL,
+  `updatedat` datetime DEFAULT NULL,
+  `tinhtrangxuly_order` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+ 
+ALTER TABLE `gs_tinhtrangxuly`
+  ADD PRIMARY KEY (`tinhtrangxuly_id`),
+  ADD KEY `tinhtrangxuly_createdby` (`createdby`),
+  ADD KEY `tinhtrangxuly_updatedby` (`updatedby`);
+ 
+ALTER TABLE `gs_tinhtrangxuly`
+  MODIFY `tinhtrangxuly_id` int(11) NOT NULL AUTO_INCREMENT;
+
+//======================
+  CREATE TABLE IF NOT EXISTS `gs_xulyphananh` (
+  `xulyphananh_id` int(11) NOT NULL,
+  `xulyphananh_noidung` text COLLATE utf8_unicode_ci,
+  `xulyphananh_actived` int(11) NOT NULL DEFAULT '0',
+  `tinhtrangxulyphananh_id` int(11) DEFAULT NULL,
+  `createdby` int(11) DEFAULT NULL,
+  `createdat` datetime DEFAULT NULL,
+  `updatedby` int(11) DEFAULT NULL,
+  `updatedat` datetime DEFAULT NULL,
+  `orglv1` int(11) DEFAULT NULL,
+  `orglv2` int(11) DEFAULT NULL, 
+  `xulyphananh_order` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+ 
+ALTER TABLE `gs_xulyphananh`
+  ADD PRIMARY KEY (`xulyphananh_id`),
+  ADD KEY `xulyphananh_createdby` (`createdby`),
+  ADD KEY `xulyphananh_updatedby` (`updatedby`),
+  ADD KEY `xulyphananh_orglv1` (`orglv1`),
+  ADD KEY `xulyphananh_orglv2` (`orglv2`),
+  ADD KEY `xulyphananh_tinhtrangxulyphananh_id` (`tinhtrangxulyphananh_id`);
+ 
+ALTER TABLE `gs_xulyphananh`
+  MODIFY `xulyphananh_id` int(11) NOT NULL AUTO_INCREMENT;
+ 
